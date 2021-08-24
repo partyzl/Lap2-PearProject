@@ -14,7 +14,8 @@ server.use('/post', postRoutes);
 // Root route
 server.get('/', (req, res) => res.send('Hello, world!'));
 
-server.get('/:id', postRoutes);
-server.post('/new', postRoutes);
+// Routes for read by id and new posts
+server.get('/:id', postRoutes.getById);
+server.post('/new', postRoutes.create);
 
 module.exports = server;
