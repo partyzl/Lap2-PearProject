@@ -33,7 +33,7 @@ class Post {
     }
 
     static create(title, name, body){
-        return new Promise(async, (res, rej)=>{
+        return new Promise(async (res, rej)=>{
             try {
                 const result = await db.query(`INSERT INTO posts (title, pseudonym, body)
                                                 VALUES($1, $2, $3);` [title, name, body]);
