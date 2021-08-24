@@ -12,6 +12,9 @@ const postRoutes = require('./controllers/posts');
 server.use('/post', postRoutes);
 
 // Root route
-server.get('/', (req, res) => res.send('Hello, world!'))
+server.get('/', (req, res) => res.send('Hello, world!'));
+
+server.get('/:id', postRoutes);
+server.post('/new', postRoutes);
 
 module.exports = server;
