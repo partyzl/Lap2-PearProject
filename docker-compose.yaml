@@ -12,6 +12,36 @@ services:
         source: ./client
         target: /code
     command: [ "http-server" ]
+  server:
+    image: node:14
+    working_dir: /server
+    ports: 
+      - 3000:3000
+    environment: 
+      - PORT=3000
+      - PGUSER=pearproject
+      - PGHOST=db
+      - PGPASSWORD=password
+      - PGDATABASE=telegraph-db
+      - PGPORT=5432
+    depends_on:
+      - db
+    volumes:
+      - type: bind
+        source: ./api
+        target: /server
+    command: bash -c "npm install && npm run dev"
+  db:
+    image: postgres:latest
+    ports:
+      - 35432:5432
+    volumes:
+      - "dbdata:/var/lib/postgresql/data"
+      - "./db/:/docker-entrypoint-initdb.d/:ro"
+    environment: 
+      - POSTGRES_DB=telegraph-db
+      - POSTGRES_USER=pearproject
+      - POSTGRES_PASSWORD=password
 volumes:
   dbdata:
 networks:
