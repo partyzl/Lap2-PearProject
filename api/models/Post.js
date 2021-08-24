@@ -11,7 +11,7 @@ class Post {
         return new Promise(async (res, rej)=>{
             try{
                 const result = await db.query(`SELECT * FROM posts;`);
-                const postData = await result.rows.map(p => new Post(p));
+                const postData = result.rows.map(p => new Post(p));
                 res(postData)
             }catch(err){
                 rej("There was an error displaying your posts")
