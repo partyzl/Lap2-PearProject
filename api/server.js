@@ -5,17 +5,13 @@ const { json } = require('express');
 const server = express();
 
 server.use(cors());
-server.use(express(json));
-
-const postRoutes = require('./controllers/posts');
-
-server.use('/post', postRoutes);
+server.use(express.json());
 
 // Root route
 server.get('/', (req, res) => res.send('Hello, world!'));
 
-// Routes for read by id and new posts
-server.get('/:id', postRoutes.getById);
-server.post('/new', postRoutes.create);
+const postRoutes = require('./controllers/post');
+
+server.use('/post', postRoutes);
 
 module.exports = server;
