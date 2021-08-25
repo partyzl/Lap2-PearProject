@@ -17,7 +17,7 @@ services:
       - type: bind
         source: ./api
         target: /code
-    command: bash -c "npm i && npm start"
+    command: bash -c "npm i && npm run dev"
 
   db:
     image: postgres:latest
