@@ -1,19 +1,20 @@
-const form = document.querySelector('form');
+const form = document.querySelector('#new-post-form');
 const postsList = document.querySelector('table');
 
 form.addEventListener('submit', myFun);
+// form.addEventListener('submit', postPost);
 
 getAll();
 
 function getAll() {
-    fetch(`http://localhost:3000/posts`)
+    fetch(`http://localhost:3000/post`)
     .then(r => r.json())
     .then(appendPosts)
     .catch(console.warn)
 }
 
 function getById(id) {
-    fetch(`http://localhost:3000/posts/${id}`)
+    fetch(`http://localhost:3000/post/${id}`)
     .then(r => r.json())
     .then(appendPost)
     .catch(console.warn)
@@ -31,15 +32,35 @@ function myFun(e) {
     const options = {
         method: 'POST',
         body: JSON.stringify(postData),
-        headers: { "Content-title": "application/json" },
+        headers: { "Content-type": "application/json" },
     }
 
     fetch('http://localhost:3000/post', options)
     .then(resp => resp.json())
     .then(appendPost)
     .then(() => e.target.reset())
-    .catch(console.error)
+    .catch(console.warn)
 }
+// async function postPost(e){
+//     e.preventDefault();
+//     try {
+//         const options = {
+//             method: 'POST',
+//             headers: { "Content-Type": "application/json" },
+//             body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
+//         }
+        
+//         const response = await fetch('http://localhost:3000/post', options);
+//         const { id, err } = await response.json();
+//         if(err) { 
+//             throw Error(err) 
+//         } else {
+//             window.location.hash = `#post/${id}`
+//         }
+//     } catch (err) {
+//         console.warn(err);
+//     }
+// }
 
 function appendPosts(data) {
     data.posts.forEach(appendPost);
@@ -47,6 +68,7 @@ function appendPosts(data) {
 
 function appendPost(postData) {
     const newRow = document.createElement('tr');
+    //newRow.classList('align-middle')
     const postLi = formatPostTr(postData, newRow);
     postsList.append(postLi);
 }
@@ -56,7 +78,7 @@ function formatPostTr(post, tr) {
     const titleTd = document.createElement('td');
     const bodyTd = document.createElement('td');
 
-    nameTd.textContent = post.name;
+    nameTd.textContent = post.title;
     titleTd.textContent = post.name;
     bodyTd.textContent = post.body;
 

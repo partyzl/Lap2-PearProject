@@ -22,9 +22,9 @@ router.get('/:id', async(req, res)=>{
     }
 })
 
-router.post('/new', async(req,res)=>{
+router.post('/', async(req,res)=>{
     try {
-        const post = Post.create(req.params.body);
+        const post = await Post.create(req.body.title, req.body.name, req.body.body);
         res.status(201).json(post);
     } catch (error) {
         console.warn("There was an error creating this dog");
