@@ -1,9 +1,11 @@
-const form = document.querySelector('form');
+const form = document.querySelector('#new-post-form');
 const postsList = document.querySelector('table');
 
 form.addEventListener('submit', submitPost);
 
+
 getAllPosts();
+
 
 function getAllPosts() {
     fetch(`http://localhost:3000/post`)
@@ -32,14 +34,16 @@ function submitPost(e) {
         method: 'POST',
         body: JSON.stringify(postData),
         headers: { "Content-Type": "application/json" }
+
     }
 
     fetch('http://localhost:3000/post', options)
     .then(resp => resp.json())
     .then(appendPost)
     .then(() => e.target.reset())
-    .catch(console.error)
+    .catch(console.warn)
 }
+
 
 function appendPosts(data) {
     data.posts.forEach(appendPost);
@@ -47,6 +51,7 @@ function appendPosts(data) {
 
 function appendPost(postData) {
     const newRow = document.createElement('tr');
+    //newRow.classList('align-middle')
     const postLi = formatPostTr(postData, newRow);
     postsList.append(postLi);
 }
@@ -55,6 +60,7 @@ function formatPostTr(post, tr) {
     const pseudonymTd = document.createElement('td');
     const titleTd = document.createElement('td');
     const bodyTd = document.createElement('td');
+
 
     pseudonymTd.textContent = post.pseudonym;
     titleTd.textContent = post.title;
