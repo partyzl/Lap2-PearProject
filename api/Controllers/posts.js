@@ -31,26 +31,5 @@ router.post('/', async (req, res) => {
     }
 });
 
-// router.patch('/:id', async (req, res) => {
-//     try {
-//         const post = await Post.findById(parseInt(req.params.id));
-//         const updatedpost = await Post.update();
-//         res.json({post: updatedpost});
-//     } catch (err) {
-//         console.error(err);
-//         res.status(500).json({err});
-//     }
-// })
-
-// router.delete('/:id', async (req, res) => {
-//     try {
-//         const post = await Post.findById(parseInt(req.params.id));
-//         await Post.destroy();
-//         res.status(204).json('post deleted');
-//     } catch (err) {
-//         console.error(err);
-//         res.status(500).json({err});
-//     }
-// })
 
 module.exports = router;

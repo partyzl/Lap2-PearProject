@@ -46,31 +46,6 @@ class Post {
             }
         })
     }
-
-    // update() {
-    //     return new Promise(async (res, rej) => {
-    //         try {
-    //             const updatedpostData = await db.query(`UPDATE posts SET height = height + 1 WHERE id = $1 RETURNING *;`, [this.id]);
-    //             const updatedpost = await new post(updatedpostData.rows[0]);
-    //             res(updatedpost);
-    //         } catch (err) {
-    //             console.error(err);
-    //             rej('Error updating the post');
-    //         }
-    //     })
-    // }
-    // 
-    // destroy() {
-    //     return new Promise(async (res, rej) => {
-    //         try {
-    //             await db.query(`DELETE FROM posts WHERE id = $1;`, [this.id]);
-    //             res('post was deleted');
-    //         } catch (err) {
-    //             console.error(err);
-    //             rej('post could not be deleted');
-    //         }
-    //     })
-    // }
 }
 
 module.exports = Post;

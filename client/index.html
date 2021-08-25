@@ -18,7 +18,7 @@
 
     <section class="container">
         <noscript>I love coffee, I love tea. No JavaScript? Get outta here!</noscript>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <section class="container-fluid">
                 <span class="navbar-brand">
                     <a href='#'>
@@ -36,26 +36,28 @@
                     </ul>
                 </section>
             </section>
-        </nav>
-        <form id="new-post-form" class="row g-3">
-            <section class="col-md-6">
-                <section class="col-md-6 m-2">
-                    <input id="title" type="text" name="title" class="form-control no-outline" placeholder="Title" maxlength="50" required>
+        </nav> -->
+        <section id="form-area">
+            <form id="new-post-form" class="row g-3">
+                <section class="col-md-6">
+                    <section class="col-md-6 m-2">
+                        <input id="title" type="text" name="title" class="form-control no-outline" placeholder="Title" maxlength="50" required>
+                    </section>
+                    <section class="col-12 m-2">
+                        <button type="submit" class="btn btn-outline-dark" id="pubBtn">Publish</button>
+                    </section>
+                    <section class="col-md-6 m-2">
+                        <input id="name" type="text" name="pseudonym" class="form-control no-outline" placeholder="Name" maxlength="50" required>
+                    </section>
+                    <section class="col-12 m-2">
+                        <input id="body" type="text" name="body" class="form-control no-outline" placeholder="Entry" maxlength="500" required>
+                    </section>
                 </section>
-                <section class="col-12 m-2">
-                    <button type="submit" class="btn btn-outline-dark" id="pubBtn">Publish</button>
-                </section>
-                <section class="col-md-6 m-2">
-                    <input id="name" type="text" name="name" class="form-control no-outline" placeholder="Name" maxlength="50" required>
-                </section>
-                <section class="col-12 m-2">
-                    <input id="body" type="text" name="body" class="form-control no-outline" placeholder="Entry" maxlength="500" required>
-                </section>
-            </section>
-        </form>
-        
-        <section>
-            <h1>Posts</h1>
+            </form>
+        </section>
+            
+            <section>
+                <h1>Posts</h1>
             <section class="table-responsive">
                 <table class="table table-hover">
                     <tr>
@@ -66,36 +68,6 @@
                 </table>
             </section>
         </section>
-
-<!--     <form>
-        <label for="pseudonym"></label>
-        <input type="text" name="pseudonym" id="pseudonym" placeholder="Pseudonym">
-
-    <form>
-        <label for="pseudonym">Pseudonym</label>
-        <input id="pseudonym" type="text" maxlength="20" required>
-
-
-        <label for="title">Title</label>
-        <input id="title" type="text" maxlength="30" required>
-
-        <label for="body">Body</label>
-        <input id="body" type="text" maxlength="500" required>
-        
-        <input type="submit" value="Submit Post">
-    </form>
-
-    <section>
-        <h1>Posts</h1>
-        <table>
-            <tr>
-                <th>Pseudonym</th>
-                <th>Title</th>
-                <th>Body</th>
-            </tr>
-        </table> -->
-
-    </section>
     </body>
     </html>
     
