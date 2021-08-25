@@ -37,18 +37,17 @@
         </nav>
         <form id="new-post-form" class="row g-3">
             <section class="col-md-6">
-
-                <section class="col-md-6">
-                    <input type="text" name="name" class="form-control" placeholder="Name" maxlength="50" required>
+                <section class="col-md-6 m-2">
+                    <input id="title" type="text" name="title" class="form-control no-outline" placeholder="Title" maxlength="50" required>
                 </section>
-                <section class="col-md-6">
-                <input type="text" name="title" class="form-control" placeholder="Title" maxlength="50" required>
+                <section class="col-12 m-2">
+                    <button type="submit" class="btn btn-outline-dark" id="pubBtn">Publish</button>
                 </section>
-                <section class="col-12">
-                <input type="text" name="body" class="form-control" placeholder="Entry" maxlength="500" required>
+                <section class="col-md-6 m-2">
+                    <input id="name" type="text" name="name" class="form-control no-outline" placeholder="Name" maxlength="50" required>
                 </section>
-                <section class="col-12">
-                <input type="submit" class="btn btn-primary" id="pubBtn" value="Publish">
+                <section class="col-12 m-2">
+                    <input id="body" type="text" name="body" class="form-control no-outline" placeholder="Entry" maxlength="500" required>
                 </section>
             </section>
         </form>
@@ -56,7 +55,7 @@
         <section>
             <h1>Posts</h1>
             <section class="table-responsive">
-                <table class="table align-middle">
+                <table class="table table-hover">
                     <tr>
                         <th>Title</th>
                         <th>Pseudonym</th>

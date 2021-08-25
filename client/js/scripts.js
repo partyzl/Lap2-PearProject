@@ -32,7 +32,7 @@ function myFun(e) {
     const options = {
         method: 'POST',
         body: JSON.stringify(postData),
-        headers: { "Content-type": "application/json" },
+        headers: { "Content-Type": "application/json" },
     }
 
     fetch('http://localhost:3000/post', options)
