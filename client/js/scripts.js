@@ -1,29 +1,29 @@
 const form = document.querySelector('form');
 const postsList = document.querySelector('table');
 
-form.addEventListener('submit', myFun);
+form.addEventListener('submit', submitPost);
 
-getAll();
+getAllPosts();
 
-function getAll() {
-    fetch(`http://localhost:3000/posts`)
+function getAllPosts() {
+    fetch(`http://localhost:3000/post`)
     .then(r => r.json())
     .then(appendPosts)
     .catch(console.warn)
 }
 
 function getById(id) {
-    fetch(`http://localhost:3000/posts/${id}`)
+    fetch(`http://localhost:3000/post/${id}`)
     .then(r => r.json())
     .then(appendPost)
     .catch(console.warn)
 }
 
-function myFun(e) {
+function submitPost(e) {
     e.preventDefault();
 
     const postData = {
-        name: e.target.name.value,
+        pseudonym: e.target.pseudonym.value,
         title: e.target.title.value,
         body: e.target.body.value
     }
@@ -31,7 +31,7 @@ function myFun(e) {
     const options = {
         method: 'POST',
         body: JSON.stringify(postData),
-        headers: { "Content-title": "application/json" },
+        headers: { "Content-Type": "application/json" }
     }
 
     fetch('http://localhost:3000/post', options)
@@ -52,15 +52,15 @@ function appendPost(postData) {
 }
 
 function formatPostTr(post, tr) {
-    const nameTd = document.createElement('td');
+    const pseudonymTd = document.createElement('td');
     const titleTd = document.createElement('td');
     const bodyTd = document.createElement('td');
 
-    nameTd.textContent = post.name;
-    titleTd.textContent = post.name;
+    pseudonymTd.textContent = post.pseudonym;
+    titleTd.textContent = post.title;
     bodyTd.textContent = post.body;
 
-    tr.append(nameTd);
+    tr.append(pseudonymTd);
     tr.append(titleTd);
     tr.append(bodyTd);
 
