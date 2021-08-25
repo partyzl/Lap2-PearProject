@@ -12,8 +12,10 @@
       type="image/png" 
       href="https://res.cloudinary.com/getfutureproof/image/upload/v1595323158/favicon_r7jazg.png" />
     <title>Pear Project</title>
+    <script defer src="./js/app.js"></script>
 </head>
 <body>
+
     <section class="container">
         <noscript>I love coffee, I love tea. No JavaScript? Get outta here!</noscript>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -69,22 +71,27 @@
         <label for="pseudonym"></label>
         <input type="text" name="pseudonym" id="pseudonym" placeholder="Pseudonym">
 
-        <label for="title"></label>
-        <input type="text" name="title" id="title" placeholder="Title">
+    <form>
+        <label for="pseudonym">Pseudonym</label>
+        <input id="pseudonym" type="text" maxlength="20" required>
 
-        <label for="body"></label>
-        <input type="text" name="body" id="body" placeholder="Entry">
 
-        <input type="submit" value="Publish">
+        <label for="title">Title</label>
+        <input id="title" type="text" maxlength="30" required>
+
+        <label for="body">Body</label>
+        <input id="body" type="text" maxlength="500" required>
+        
+        <input type="submit" value="Submit Post">
     </form>
 
     <section>
         <h1>Posts</h1>
         <table>
             <tr>
-                <th>Species</th>
-                <th>Type</th>
-                <th>Height</th>
+                <th>Pseudonym</th>
+                <th>Title</th>
+                <th>Body</th>
             </tr>
         </table> -->
 
