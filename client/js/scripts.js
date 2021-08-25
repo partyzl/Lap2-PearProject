@@ -1,12 +1,13 @@
 const form = document.querySelector('#new-post-form');
 const postsList = document.querySelector('table');
 
-form.addEventListener('submit', myFun);
-// form.addEventListener('submit', postPost);
+form.addEventListener('submit', submitPost);
 
-getAll();
 
-function getAll() {
+getAllPosts();
+
+
+function getAllPosts() {
     fetch(`http://localhost:3000/post`)
     .then(r => r.json())
     .then(appendPosts)
@@ -20,11 +21,11 @@ function getById(id) {
     .catch(console.warn)
 }
 
-function myFun(e) {
+function submitPost(e) {
     e.preventDefault();
 
     const postData = {
-        name: e.target.name.value,
+        pseudonym: e.target.pseudonym.value,
         title: e.target.title.value,
         body: e.target.body.value
     }
@@ -32,7 +33,8 @@ function myFun(e) {
     const options = {
         method: 'POST',
         body: JSON.stringify(postData),
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json" }
+
     }
 
     fetch('http://localhost:3000/post', options)
@@ -41,26 +43,7 @@ function myFun(e) {
     .then(() => e.target.reset())
     .catch(console.warn)
 }
-// async function postPost(e){
-//     e.preventDefault();
-//     try {
-//         const options = {
-//             method: 'POST',
-//             headers: { "Content-Type": "application/json" },
-//             body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
-//         }
-        
-//         const response = await fetch('http://localhost:3000/post', options);
-//         const { id, err } = await response.json();
-//         if(err) { 
-//             throw Error(err) 
-//         } else {
-//             window.location.hash = `#post/${id}`
-//         }
-//     } catch (err) {
-//         console.warn(err);
-//     }
-// }
+
 
 function appendPosts(data) {
     data.posts.forEach(appendPost);
@@ -74,15 +57,16 @@ function appendPost(postData) {
 }
 
 function formatPostTr(post, tr) {
-    const nameTd = document.createElement('td');
+    const pseudonymTd = document.createElement('td');
     const titleTd = document.createElement('td');
     const bodyTd = document.createElement('td');
 
-    nameTd.textContent = post.title;
-    titleTd.textContent = post.name;
+
+    pseudonymTd.textContent = post.pseudonym;
+    titleTd.textContent = post.title;
     bodyTd.textContent = post.body;
 
-    tr.append(nameTd);
+    tr.append(pseudonymTd);
     tr.append(titleTd);
     tr.append(bodyTd);
 

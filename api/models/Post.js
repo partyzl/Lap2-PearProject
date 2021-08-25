@@ -3,7 +3,7 @@ const db = require('../dbConfig');
 class Post {
     constructor(data){
         this.title = data.title;
-        this.name = data.pseudonym;
+        this.pseudonym = data.pseudonym;
         this.body = data.body;
     }
 
@@ -32,11 +32,11 @@ class Post {
         })
     }
 
-    static create(title, name, body){
+    static create(data){
         return new Promise(async (res, rej)=>{
             try {
                 const result = await db.query(`INSERT INTO posts (title, pseudonym, body)
-                                                VALUES($1, $2, $3);` [title, name, body]);
+                                                VALUES ($1, $2, $3) RETURNING *;` [data.title, data.pseudonym, data.body]);
                 const postData = new Post(result.rows[0]);
                 res(postData);
             } catch (error) {

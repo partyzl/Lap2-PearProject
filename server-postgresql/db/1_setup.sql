@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS posts;
+
+CREATE TABLE posts (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(50) NOT NULL,
+    pseudonym VARCHAR(50) NOT NULL,
+    body VARCHAR(500) NOT NULL
+);
