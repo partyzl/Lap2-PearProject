@@ -19,6 +19,7 @@ bash _scripts/teardown.sh
 ```
 bash _scripts/startDev.sh
 ```
+- Access the front end via [here](https://telegraph-mock.netlify.app/)
 ---
 ## Functionality
 - Users can view all posts made by others
